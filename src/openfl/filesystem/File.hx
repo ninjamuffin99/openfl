@@ -1877,7 +1877,7 @@ class File extends FileReference
 		var pattern:EReg = ~/%(.+?)%/;
 
 		// Find the first match of the regular expression in the path
-		var match:Bool = pattern.match(path);
+		var match:Bool	 = pattern.match(__path);
 
 		if (match)
 		{
@@ -1889,18 +1889,17 @@ class File extends FileReference
 
 			// Get the value of the environment variable
 			var envVarValue:Null<String> = Sys.getEnv(envVar);
-
-			if (envVarValue == null)
-			{
+			
+			if (envVarValue == null){
 				return path;
 			}
 			// Replace the matched path component with the environment variable value
-			return StringTools.replace(path, matchedPath, envVarValue);
+			return StringTools.replace(__path, matchedPath, envVarValue);
 		}
 		return path;
 	}
 	#end
-
+		
 	@:noCompletion private function __winGetHiddenAttr():Bool
 	{
 		// TODO don't use the command line for this.... instead we should add support in Lime to use
@@ -2053,6 +2052,11 @@ class File extends FileReference
 
 		__updateFileStats(path);
 
+		#if windows
+		if (path.indexOf("%") > -1){
+			path = __replaceWindowsEnvVars(path);
+		}		
+		#end
 		return __path = path.indexOf(#if windows "/" #else "\\" #end) > 0 ? __formatPath(path) : path;
 	}
 
