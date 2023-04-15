@@ -352,8 +352,7 @@ class TextLayout
 }
 
 @SuppressWarnings("checkstyle:FieldDocComment")
-#if (haxe_ver >= 4.0) enum #else @:enum #end abstract TextScript(String) to (String)
-
+@:enum abstract TextScript(String) to (String)
 {
 	public var COMMON = "Zyyy";
 	public var INHERITED = "Zinh";
