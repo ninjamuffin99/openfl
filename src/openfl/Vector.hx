@@ -2549,7 +2549,7 @@ abstract Vector<T>(VectorData<T>)
 	{
 		if (array != null)
 		{
-			this = ofArray(array);
+			this = VectorData.ofArray(array);
 		}
 		else
 		{
