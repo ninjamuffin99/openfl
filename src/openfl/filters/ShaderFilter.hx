@@ -142,8 +142,6 @@ class ShaderFilter extends BitmapFilter
 
 		this.shader = shader;
 
-		this.blendMode = NORMAL;
-
 		__numShaderPasses = 1;
 	}
 
