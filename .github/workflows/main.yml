@@ -82,15 +82,15 @@ jobs:
 
       - name: Run tests on Neko
         run: |
-          haxelib run hxp test -Dtarget=neko -Duse-lime-tools --install-hxp-alias
+          haxelib run hxp test -Dtarget=neko -Duse-lime-tools=1 --install-hxp-alias
 
       - name: Run tests on HashLink
         run: |
-          haxelib run hxp test -Dtarget=hl -Duse-lime-tools --install-hxp-alias
+          haxelib run hxp test -Dtarget=hl -Duse-lime-tools=1 --install-hxp-alias
 
       - name: Run tests on Adobe AIR
         run: |
-          haxelib run hxp test -Dtarget=air -Duse-lime-tools --install-hxp-alias
+          haxelib run hxp test -Dtarget=air -Duse-lime-tools=1 --install-hxp-alias
 
   package-haxelib:
     runs-on: macos-11
