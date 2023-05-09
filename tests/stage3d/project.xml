@@ -4,6 +4,5 @@
 	<source path="src"/>
 	<haxelib name="utest"/>
 	<haxelib name="openfl" path="../.."/>
-	<!-- TODO: uncomment when tests are stable -->
-	<!-- <define name="integration"/> -->
+	<define name="integration"/>
 </project>
