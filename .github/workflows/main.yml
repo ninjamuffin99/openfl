@@ -194,6 +194,7 @@ jobs:
       - name: Prepare openfl
         run: |
           haxelib dev openfl openfl-haxelib
+          haxelib run lime setup -alias -y
           haxelib run openfl setup -alias -y
 
       - name: Create OpenFL samples
@@ -240,6 +241,7 @@ jobs:
       - name: Prepare openfl
         run: |
           haxelib dev openfl openfl-haxelib
+          haxelib run lime setup -alias -y
           haxelib run openfl setup -alias -y
 
       - name: Create OpenFL samples
@@ -293,6 +295,7 @@ jobs:
       - name: Prepare openfl
         run: |
           haxelib dev openfl openfl-haxelib
+          haxelib run lime setup -alias -y
           haxelib run openfl setup -alias -y
 
       - name: Create OpenFL samples
@@ -338,6 +341,7 @@ jobs:
       - name: Prepare openfl
         run: |
           haxelib dev openfl openfl-haxelib
+          haxelib run lime setup -alias -y
           haxelib run openfl setup -alias -y
 
       - name: Create OpenFL samples
