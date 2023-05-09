@@ -18,13 +18,15 @@ class ClipboardRTFTest extends Test
 	#if (flash && !air)
 	@Ignored
 	#end
-	#if (flash && !haxe4)
-	// ByteArray type coercion fails with Haxe 3.4.7
-	@Ignored
-	#end
 	public function test_getData(async:Async)
 	{
-		ByteArray.loadFromFile("hello.rtf").onComplete(function(richTextFormatData)
+		#if air
+		var fileURL = new File(File.applicationDirectory.nativePath).resolvePath("../../../assets/hello.rtf").url;
+		#else
+		var fileURL = "hello.rtf";
+		#end
+
+		ByteArray.loadFromFile(fileURL).onComplete(function(richTextFormatData)
 		{
 			var textFormatData = 'Text Format Data';
 			var clipboard = Clipboard.generalClipboard;
