@@ -1,3 +1,80 @@
+9.3.0 (??/??/2023)
+------------------
+
+* Added `SampleDataEvent.SAMPLE_DATA` to `Sound` class
+* Added `openfl.net.SecureSocket` class implementation
+* Added `openfl.display.NativeWindow` class implementation
+* Added partial `openfl.desktop.NativeApplication` implementation, including `applicationID`, `exit()`, `Event.ACTIVATE`, `Event.DEACTIVATE`, `InvokeEvent.INVOKE` for launch command line arguments, and properties to test if features are supported
+* Added `openfl.display.Screen` class implementation
+* Added `openfl.net.FileReferenceList` class implementation for html5 target
+* Added `upload()` implementation to `FileReference` for sys targets
+* Added `updateAfterEvent()` to `MouseEvent`, `KeyboardEvent`, `TouchEvent`, and `TimerEvent`
+* Added `separator` and `lineEncoding` properties to `File` class
+* Added `localPort`, `localAddress`, `remotePort`, and `remoteAddress` to `Socket` class on sys targets
+* Added `useWeakReference` support to `addEventListener()` on html5 and cpp targets
+* Added support for referencing environment variables, like `%PROGRAMFILES%` in `File` path values on Windows
+* Added various enum, event, and error types to improve parity with types available in Adobe AIR
+* Added basic implementation of `flash.text.StageText` that falls back to `TextField`, similar to AIR desktop
+* Replaced `String` with `EventType` in `FileListEvent` for better compile-time checks
+* Fixed wrong type on `size` for `FileReference` and `File` to make it `Float` instead of `Int` (Some code may need to use `Std.int()` after this change)
+* Fixed missing `controlKey` property on `MouseEvent`
+* Fixed missing `Event.OPEN` dispatch from `download()` on `FileReference`
+* Fixed corrupted binary files from `download()` on `FileReference`
+* Fixed cut and copy not being blocked by `TextField` when `displayAsPassword` is true
+* Fixed missing `Event.OPEN`, `HTTPStatusEvent.HTTP_STATUS`, `HTTPStatusEvent.HTTP_RESPONSE_STATUS`, and `DataEvent.UPLOAD_COMPLETE` events from `upload()` on `FileReference`
+* Fixed `responseHeaders` on `URLLoader` that should have defaulted to an empty array instead of null
+* Fixed `HTTPStatusEvent.HTTP_STATUS` on `URLLoader`, which should not have included `responseURL` and `responseHeaders`
+* Fixed missing `HTTPStatusEvent.HTTP_RESPONSE_STATUS` on `URLLoader`, which is where `responseURL` and `responseHeaders` should have been
+* Fixed runtime exception when using hardware-only texture with `beginBitmapFill()` by drawing black rectangle instead
+* Fixed `BackgroundWorker` deprecation warning when using `File` and `FileStream` after `ThreadPool` is introduced in Lime
+* Fixed events being dispatched from wrong thread when using asynchronous `File` APIs
+* Fixed dragging to scroll in `TextField` when scaled, by switching to `getBounds()`
+* Fixed empty `data` value on `URLLoader` when dispatching `IOErrorEvent.IO_ERROR` and server returned a response
+* Fixed `Vector.ofArray()` on flash/air targets
+* Fixed wrong signature on `Socket` constructor, which should not have had default values
+* Fixed incorrect "Lime Application" window title when targeting Adobe AIR on desktop
+* Fixed missing cleanup code when closing windows and shutting down application that could lead to memory leaks
+* Fixed event listener issue in `TextField` by comparing stage values to avoid issues with multiple windows or null stage
+* Fixed typo in name of `Context3DAlphaMaskShader` class
+* Fixed `FlashGraphics` being included in other targets under some circumstances by adding `#if flash` conditional
+* Fixed `openfl.globalization`, `Namespace`, and `QName` issues in npm version
+* Fixed incorrect condition that caused issues in `ShapeCache`
+* Added `openfl_hack_fix_chrome_text` define to workaround a bug in Chrome that garbles text
+
+9.2.2 (05/31/2023)
+------------------
+
+* Updated flash target externs for Haxe 4.3 compatibility
+* Resolve new `@:enum abstract` warnings for Haxe 4.3 by replacing with `enum abstract`, if current Haxe version supports it
+* Fixed `TextField` keyboard shortcut support to account for AltGr key
+* Fixed double timer in `TextField` that would cause caret to keep blinking on focus out
+* Fixed exception in `TextField` rendered by Cairo when the text contains ligatures
+* Fixed `null` exception in `FileReference.browse()` when no files are selected on html5 target
+* Fixed incorrect `accept` attribute on html5 input element if type filter is used once, but not second time
+* Fixed `Context3D` scissor rectangle (again), with better fix for both classic display list and Stage 3D
+* Fixed text for AM and PM returned by `DateTimeFormatter` on html5 target
+* Fixed default locale on html5 for `DateTimeFormatter` and `LocaleID`
+* Fixed drawing display object with `visible == false` to `BitmapData`, which should have made it temporarily visible
+* Fixed default fallback `QName.uri` value to match flash target
+* Fixed bounds calculation of `Graphics.cubicCurveTo()`
+* Fixed "Select error 22" exception when creating many `Socket` objects at once
+* Fixed uncaught exception when creating a `Socket`
+* Fixed invalid `null` value passed to `Vector` constructor on flash target
+* Fixed possible incorrect detection of current stage on `TextField` mouse up
+* Fixed `Transform.matrix3D` setter vertical scale value
+* Fixed default `blendMode` used by `ShaderFilter`
+* Fixed setting `topExtension`, `rightExtension`, `bottomExtension`, and `leftExtension` in `ShaderFilter`
+* Fixed compilation of `RenderEvent` for flash target
+* Fixed issue where setting `width` and `height` of `Video` was sometimes ignored
+* Fixed missing `System.totalMemory` and `System.gc()` on HashLink
+* Fixed `Graphics.lineGradientStyle()` to allow `null` values for `alphas` and `ratios` parameters, similar to `beginGradientFill()`
+* Fixed default fallback value for `ratios` parameter in `Graphics.lineGradientStyle()` and `beginGradientFill()`
+* Fixed `Graphics` (and text) jitter on HiDPI screens when using hardware acceleration by snapping to nearest device pixel instead of nearest stage pixel
+* Added missing parameters to `Context3D.drawToBitmapData()` in flash target externs
+* Added new `openfl_disable_graphics_pixel_snapping` define to optionally disable pixel snapping on `Graphics` tx/ty transformation
+* Translate environment variables that appear in `File` path on Windows
+* When using flash target with Haxe 4.3, Lime 8.0.2 is required
+
 9.2.1 (02/21/2023)
 ------------------
 
